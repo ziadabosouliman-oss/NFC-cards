@@ -4,65 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بطاقة أعمال ذكية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --bg-color: #0d0f12;
-            --card-bg: #161920;
-            --gold: #d4af37;
-            --text-main: #ffffff;
-            --text-muted: #9ca3af;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Tajawal', sans-serif;
+            font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: #0d0f12;
+            color: #ffffff;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             padding: 20px;
         }
 
         .card {
-            background: var(--card-bg);
             width: 100%;
             max-width: 420px;
+            background-color: #161920;
             border-radius: 24px;
-            padding: 35px 25px;
+            padding: 32px 24px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #997a15, var(--gold), #997a15);
-        }
-
-        .avatar-wrapper {
-            width: 120px;
-            height: 120px;
+        .avatar-box {
+            width: 110px;
+            height: 110px;
             margin: 0 auto 18px;
             border-radius: 50%;
-            padding: 4px;
-            background: linear-gradient(135deg, var(--gold), #5c4808);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+            padding: 3px;
+            background: linear-gradient(135deg, #d4af37, #7a6012);
         }
 
         .avatar {
@@ -70,135 +47,224 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            background-color: #222;
+            background-color: #242936;
+            display: block;
         }
 
         .name {
             font-size: 24px;
             font-weight: 800;
-            margin-bottom: 5px;
+            color: #ffffff;
+            margin-bottom: 6px;
         }
 
         .title {
             font-size: 15px;
-            color: var(--gold);
             font-weight: 700;
-            margin-bottom: 15px;
+            color: #d4af37;
+            margin-bottom: 14px;
         }
 
         .bio {
             font-size: 14px;
-            color: var(--text-muted);
             line-height: 1.7;
-            margin-bottom: 22px;
-            padding: 0 10px;
+            color: #b5bcc9;
+            margin-bottom: 20px;
         }
 
-        .address-box {
-            background: rgba(255, 255, 255, 0.04);
-            padding: 12px 15px;
-            border-radius: 14px;
-            font-size: 13px;
-            color: #e5e7eb;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+        .address {
+            display: block;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #f3f4f6;
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
-        }
-
-        .address-box:hover {
-            border-color: var(--gold);
-        }
-
-        .address-box i {
-            color: var(--gold);
-            font-size: 16px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .save-btn {
-            background: linear-gradient(135deg, var(--gold), #b59224);
-            color: #000;
-            border: none;
             width: 100%;
-            padding: 15px;
-            border-radius: 14px;
-            font-size: 16px;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #d4af37, #b38f22);
+            color: #000000;
+            font-size: 15px;
             font-weight: 800;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 25px;
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 18px;
         }
 
-        .save-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
-        }
-
-        .quick-actions {
+        .actions {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 25px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
-        .action-btn {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-main);
+        .action-link {
+            display: block;
+            padding: 12px 8px;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
             text-decoration: none;
-            padding: 14px 10px;
-            border-radius: 14px;
             font-size: 13px;
-            font-weight: 500;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            border: 1px solid rgba(255,255,255,0.06);
-            transition: 0.3s;
-        }
-
-        .action-btn i {
-            font-size: 20px;
-            color: var(--gold);
-        }
-
-        .action-btn:hover {
-            background: rgba(212, 175, 55, 0.12);
-            border-color: var(--gold);
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .socials {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 14px;
-            padding-top: 20px;
+            justify-content: center;
+            gap: 10px;
+            padding-top: 16px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .social-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.06);
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .social-link {
+            padding: 9px 14px;
+            border-radius: 999px;
+            background-color: rgba(212, 175, 55, 0.12);
+            color: #d4af37;
             text-decoration: none;
-            font-size: 18px;
-            transition: 0.3s;
+            font-size: 13px;
+            font-weight: 700;
         }
 
-        .social-icon:hover {
-            background: var(--gold);
-            color: #0
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div id="avatar-wrapper" class="avatar-box hidden">
+            <img id="c-image" class="avatar" src="" alt="صورة العميل">
+        </div>
+
+        <h1 id="c-name" class="name"></h1>
+        <div id="c-title" class="title"></div>
+        <p id="c-bio" class="bio"></p>
+
+        <a id="c-address" class="address hidden" target="_blank" rel="noopener noreferrer"></a>
+
+        <button id="save-btn" class="save-btn hidden" type="button" onclick="saveContact()">
+            حفظ جهة الاتصال في الهاتف
+        </button>
+
+        <div class="actions">
+            <a id="btn-call" class="action-link hidden">اتصال</a>
+            <a id="btn-whatsapp" class="action-link hidden" target="_blank" rel="noopener noreferrer">واتساب</a>
+            <a id="btn-email" class="action-link hidden">إيميل</a>
+        </div>
+
+        <div id="socials" class="socials"></div>
+    </div>
+
+    <script>
+        // ==========================================
+        // عدّل بيانات الزبون هنا عندما يأتيك زبون جديد
+        // ==========================================
+        const client = {
+            name: "د. أحمد المنصور",
+            title: "استشاري جراحة وتجميل الأسنان",
+            bio: "خبرة أكثر من 15 عاماً في زراعة الأسنان وتصميم الابتسامة الرقمية.",
+            image: "",
+            phone: "+966500000001",
+            whatsapp: "966500000001",
+            email: "dr.ahmed@example.com",
+            address: "الرياض - حي العليا",
+            mapLink: "https://maps.google.com",
+            socials: {
+                "إنستغرام": "https://instagram.com/",
+                "سناب شات": "https://snapchat.com/",
+                "تيك توك": "",
+                "فيسبوك": "",
+                "لينكدإن": "",
+                "الموقع": "https://example.com"
+            }
+        };
+
+        document.title = client.name ? `${client.name} | ${client.title}` : "بطاقة أعمال ذكية";
+        document.getElementById("c-name").textContent = client.name || "بطاقة أعمال ذكية";
+        document.getElementById("c-title").textContent = client.title || "";
+        document.getElementById("c-bio").textContent = client.bio || "";
+
+        if (client.image && client.image.trim() !== "") {
+            document.getElementById("c-image").src = client.image;
+            document.getElementById("avatar-wrapper").classList.remove("hidden");
+        }
+
+        const addrEl = document.getElementById("c-address");
+        if (client.address) {
+            addrEl.textContent = "📍 " + client.address;
+            addrEl.classList.remove("hidden");
+            if (client.mapLink) {
+                addrEl.href = client.mapLink;
+            } else {
+                addrEl.removeAttribute("href");
+            }
+        }
+
+        if (client.phone) {
+            document.getElementById("save-btn").classList.remove("hidden");
+            const callEl = document.getElementById("btn-call");
+            callEl.href = "tel:" + client.phone;
+            callEl.classList.remove("hidden");
+        }
+
+        if (client.whatsapp) {
+            const waEl = document.getElementById("btn-whatsapp");
+            const cleanNum = client.whatsapp.replace(/[^0-9]/g, "");
+            waEl.href = "https://wa.me/" + cleanNum;
+            waEl.classList.remove("hidden");
+        }
+
+        if (client.email) {
+            const mailEl = document.getElementById("btn-email");
+            mailEl.href = "mailto:" + client.email;
+            mailEl.classList.remove("hidden");
+        }
+
+        const socialsEl = document.getElementById("socials");
+        Object.entries(client.socials).forEach(([label, url]) => {
+            if (url && url.trim() !== "") {
+                const a = document.createElement("a");
+                a.className = "social-link";
+                a.href = url;
+                a.target = "_blank";
+                a.rel = "noopener noreferrer";
+                a.textContent = label;
+                socialsEl.appendChild(a);
+            }
+        });
+
+        function saveContact() {
+            const vcard = [
+                "BEGIN:VCARD",
+                "VERSION:3.0",
+                `FN:${client.name || ""}`,
+                `TITLE:${client.title || ""}`,
+                `TEL;TYPE=CELL:${client.phone || ""}`,
+                `EMAIL:${client.email || ""}`,
+                `ADR:;;${client.address || ""};;;;`,
+                "END:VCARD"
+            ].join("\n");
+
+            const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `${client.name || "contact"}.vcf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
